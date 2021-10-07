@@ -1,0 +1,28 @@
+.App-header{
+    padding: 0 45px;
+    @media (max-width: 500px){
+        padding: 0 20px
+    }
+}
+
+.site-statistic-demo-card{
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+body{
+    min-width: 400px !important;
+    overflow: auto;
+}
+
+.ant-row.rows{
+    @media (max-width: 800px){
+        flex-direction: column;
+        max-width: 100% !important;
+
+        .ant-col{
+            max-width: 100% !important;
+            margin-bottom: 20px;
+        }
+    }
+}

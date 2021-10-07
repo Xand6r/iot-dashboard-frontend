@@ -1,0 +1,22 @@
+.statistic-demo-card{
+    box-shadow: -2px 4px 5px -4px rgb(0 0 0 / 75%);
+    -webkit-box-shadow: 2px 0px 1px -8px rgb(0 0 0 / 75%);
+    -moz-box-shadow: -2px 4px 5px -4px rgba(0, 0, 0, 0.75);
+}
+
+.rows{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: '578px'){
+
+    #root > div > header > div > div.site-statistic-demo-card > div > div:nth-child(3) > div > div > div > div.ant-statistic-content,
+    #root > div > header > div > div.site-statistic-demo-card > div > div:nth-child(2) > div > div > div > div.ant-statistic-content,
+    #root > div > header > div > div.site-statistic-demo-card > div > div:nth-child(1) > div > div > div > div.ant-statistic-content,
+    #root > div > header > div > div.site-statistic-demo-card > div > div:nth-child(4) > div > div > div > div.ant-statistic-content{
+        display: flex;
+    }
+}

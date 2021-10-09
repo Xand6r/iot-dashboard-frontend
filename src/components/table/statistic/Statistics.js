@@ -1,11 +1,10 @@
 import {useEffect, useState} from 'react';
 import { useParams } from "react-router-dom";
+// import Chart from './chart';
 import { Statistic, Card, Row, Col } from 'antd';
-import { ArrowUpOutlined } from '@ant-design/icons';
 import { getReq } from "../../../api";
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import './Statistic.scss'
-
 
 export default function Statistics(){
   const [state, setState] = useState({
@@ -35,7 +34,8 @@ export default function Statistics(){
 
 return(
   <div className="site-statistic-demo-card">
-    <Row className="rows" gutter={16}>
+    {/* <Chart /> */}
+    {/* <Row className="rows" gutter={16}>
       <Col span={5}>
         <Card className="statistic-demo-card">
           <Statistic
@@ -81,6 +81,7 @@ return(
         </Card>
       </Col>
     </Row>
+   */}
   </div>
 );
 }

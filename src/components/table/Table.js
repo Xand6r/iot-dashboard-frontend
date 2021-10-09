@@ -38,57 +38,33 @@ const columns = [
   },
 
   {
-    title: "Value",
-    dataIndex: "value",
-    key: "value",
-  },
-
-  {
-    title: "Type",
-    key: "type",
-    dataIndex: "type",
-    filters: [
-      { text: "flow", value: "flow" },
-      { text: "pressure", value: "pressure" },
-    ],
-    render: (tag) => (
-      <span>
-        <Tag color={tag.length > 5 ? "geekblue" : "green"} key={tag}>
-          {tag.toUpperCase()}
-        </Tag>
-      </span>
+    title: "Pressure",
+    key: "pressure",
+    dataIndex: "pressure",
+    render: (pressures) => (
+      pressures.map((onePressure, index) => (
+        <span>
+          <Tag color={randomColor({seed: `pressure-${index}`})} key={`pressure-${index}`}>
+            {onePressure} Pa
+          </Tag>
+        </span>
+      ))
     ),
   },
 
+
   {
-    title: "Sensor",
-    dataIndex: "sensor",
-    key: "sensor",
-    filters: [
-      { text: 1, value: 1 },
-      { text: 2, value: 2 },
-      { text: 3, value: 3 },
-      { text: 4, value: 4 },
-      { text: 5, value: 5 },
-      { text: 6, value: 6 },
-    ],
-    render: (type) => (
-      <span>
-        <Tag
-          color={randomColor({ seed: `${type}-1235`})}
-          key={type}
-          style={{
-            borderRadius: "50%",
-            width: "25px",
-            height: "25px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {type}
-        </Tag>
-      </span>
+    title: "Flow rate",
+    key: "flow",
+    dataIndex: "flow",
+    render: (flows) => (
+      flows.map((oneFlow, index) => (
+        <span>
+          <Tag color={randomColor({seed: `pressure-${index}`})} key={`pressure-${index}`}>
+            {oneFlow} N/m<sup>2</sup>
+          </Tag>
+        </span>
+      ))
     ),
   },
 ];
@@ -163,8 +139,12 @@ export default function Demo() {
     })
   }, []);
 
+
   return (
     <div>
+      <h2 style={{textAlign: "center"}}>
+        Live Data View
+      </h2>
       <Table
         columns={columns}
         pagination={{

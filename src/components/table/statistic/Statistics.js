@@ -65,12 +65,16 @@ export default function Statistics() {
 
   return (
     <div className="site-statistic-demo-card">
+      <div className="range-wrapper">
+        <RangePicker onChange={onDateChange} />
+      </div>
       {
         !data.length && !loading ? (
+          <h2>
+            No data to display for this range
+          </h2>
+        ):(
           <Spin spinning={loading} tip="Loading...">
-            <div className="range-wrapper">
-              <RangePicker onChange={onDateChange} />
-            </div>
             <div className="chart-wrapper">
               <Chart data={data} dataKey={"Pressure"} />
             </div>
@@ -79,10 +83,6 @@ export default function Statistics() {
               <Chart data={data} dataKey={"flow"} />
             </div>
           </Spin>
-        ) : (
-          <h2>
-            No data to display for this range
-          </h2>
         )
       }
     </div>

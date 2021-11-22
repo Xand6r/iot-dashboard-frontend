@@ -61,7 +61,7 @@ const columns = [
       flows.map((oneFlow, index) => (
         <span>
           <Tag color={randomColor({seed: `pressure-${index}`})} key={`pressure-${index}`}>
-            {oneFlow} N/m<sup>2</sup>
+            {oneFlow} m<sup>3</sup>/h
           </Tag>
         </span>
       ))

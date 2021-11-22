@@ -23,7 +23,7 @@ function ApexChart({ data, dataKey }) {
       },
     },
     series: [...Array(SENSOR_COUNT).keys()].map((index) => ({
-      name: `Pressure Sensor ${index + 1}`,
+      name: `${dataKey} Sensor ${index + 1}`,
       data: data.map((data) => data[dataKey.toLowerCase()][index]).flat(),
     })),
     options: {

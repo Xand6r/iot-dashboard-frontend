@@ -24,6 +24,7 @@ export default function Statistics({ socket }) {
 		if (createdEvent) return;
 		setCreatedEvent(true);
 		socket.on("NEW_DATA", (payload) => {
+			if(parseInt(payload.lab) != parseInt(labid)) return console.log('invalid');
 			setData((d) => {
 				const newValue = [payload, ...d];
 				console.log(newValue);

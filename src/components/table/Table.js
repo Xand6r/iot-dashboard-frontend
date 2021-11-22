@@ -81,6 +81,7 @@ export default function Demo({socket}) {
     if(createdEvent) return;
     setCreatedEvent(true);
     socket.on("NEW_DATA", (payload) => {
+      if(parseInt(payload.lab) != parseInt(labid)) return console.log('invalid');
       setTotal(t => t + 1);
       setData(d => {
         const newValue = [payload, ...d];

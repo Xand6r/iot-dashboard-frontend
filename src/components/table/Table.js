@@ -20,7 +20,7 @@ const columns = [
     key: "_id",
     render: (tag) => (
       <span>
-        {tag.slice(0, 7)}...
+        {tag}
       </span>
     ),
   },
@@ -69,11 +69,25 @@ const columns = [
   },
 ];
 
-export default function Demo() {
+export default function Demo({socket}) {
   const [data, setData] = useState([]);
+  const [createdEvent, setCreatedEvent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
   const { labid } = useParams();
+
+  useEffect(() => {
+    if(!socket) return;
+    if(createdEvent) return;
+    setCreatedEvent(true);
+    socket.on("NEW_DATA", (payload) => {
+      setTotal(t => t + 1);
+      setData(d => {
+        const newValue = [payload, ...d];
+        return newValue;
+      });
+    });
+  }, [socket]);
 
   const tablesParamsOnChange = (pagination, filters, sorters) => {
     // loop through the filters to construct a filter array
@@ -119,13 +133,16 @@ export default function Demo() {
 
   useEffect(() => {
     setLoading(true);
-    postReq('/filter', {
+    const params = {
       page: DEFAULT_PAGINATION.page,
       limit: DEFAULT_PAGINATION.limit,
       filter: {
         lab: parseInt(labid)
-      }
-    })
+      },
+      sorter: "-date"
+    }
+    console.log({params});
+    postReq('/filter', params)
     .then(({data:res}) => {
       console.log({res});
       setData(res.docs);
